@@ -1,5 +1,6 @@
 a = 1;
 b = 2;
 
-c = a + bgit add .
+c = a + b
+d = a + c
 
