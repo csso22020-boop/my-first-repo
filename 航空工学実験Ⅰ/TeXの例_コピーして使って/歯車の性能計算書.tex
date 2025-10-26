@@ -1,0 +1,351 @@
+\documentclass[a4paper,titlepage]{ltjsarticle}
+\usepackage{luatexja} 
+
+\usepackage{amsmath, amssymb, ar, bm, booktabs, multirow, siunitx, url, graphicx
+}
+
+\newcommand{\hang}[1]{%
+	\settowidth{\hangindent}{#1}%
+	#1%
+}%
+
+
+\newenvironment{hangall}[1]{\hangindent = #1zw\everypar{\hangindent = #1zw}}{}
+
+\graphicspath{{picture}}
+
+\begin{document}
+
+\title{設計製図Ⅰ \\第11回課題\\歯車の性能および強度計算書}
+\author{2年 2020番 大村蒼摩}
+\date{\today}
+\maketitle
+
+\setlength{\abovedisplayskip}{15pt} 
+\setlength{\belowdisplayskip}{15pt}
+
+
+\vskip\baselineskip
+
+\begin{table}[hbtp]
+	\centering
+	\caption{性能および強度計算結果}
+	\label{}
+	\begin{tabular}{l|c}
+		\toprule
+		中間軸回転数$n_{2}{\si{[rpm]}}$&381\\
+		出力軸回転数$n_{3}{ \si{[rpm]}}$&76.1\\
+		1段目減速比$i_{1}{ \si{[-]}}$&0.254\\
+		2段目減速比$i_{2}{ \si{[-]}}$&0.200\\
+		全減速比$i{ \si{[-]}}$&0.0507\\
+		入力軸の動力$N${ \si{[W]}}&283\\
+		入力軸トルク$T_{1}{ \si{[Nm]}}$&1.80\\
+		中間軸の動力$N_{2}{ \si{[W]}}$&268\\
+		中間軸のトルク$T_{2}{ \si{[Nm]}}$&6.73\\
+		出力軸の動力$N{ \si{[W]}}$&255\\
+		出力軸のトルク$T_3{ \si{[Nm]}}$&32.0\\
+		入力軸の基準ピッチ円直径$D_{1}{ \si{[mm]}}$&22.0\\
+		中間軸1の基準ピッチ円直径$D_2{ \si{[mm]}}$&86.7\\
+		中間軸2の基準ピッチ円直径$D_3{ \si{[mm]}}$&18.1\\
+		出力軸の基準ピッチ円直径$D_4{ \si{[mm]}}$&90.6\\
+		軸間距離$a{ \si{[mm]}}$&54.4\\
+		ピッチ円接線方向の力$F{ \si{[N]}}$&706\\
+		最大曲げ応力$\sigma_{bmax}{ \si{[MPa]}}$&127\\ 
+		安全率&1.74\\
+	 \bottomrule
+	\end{tabular}		
+\end{table}
+
+\begin{table}[hbtp]
+	\centering
+	\caption{減速機の仕様}
+	\label{}
+	\begin{tabular}{l|c}
+		\toprule
+		入力軸回転数$n_1$&1500 \si{rpm}\\
+		伝達効率$\eta $& 90\%\\
+		中間軸と出力軸の伝達効率$\eta _2$&95\%\\
+		減速比$i$&1/20\\
+		出力トルク$T_3$&32.0 \si{Nm}\\
+	 \bottomrule
+	\end{tabular}
+\end{table}
+
+\clearpage
+\begin{table}[hbtp]
+	\centering
+	\caption{歯車の仕様}
+	\label{}
+	\begin{tabular}{l|cccc}
+		\toprule
+		&入力ピニオン$a_1$&高速ギア$a_2$&出力ピニオン$b_1$&低速ギア$b_2$\\
+		歯数&17&67&14&70\\
+		モジュールm&1.25&1.25&1.25&1.25\\
+		圧力角$\alpha _0$&20°&20°&20°&20°\\
+		ねじれ角\beta &$\ang{15}$&$\ang{15}$&$\ang{15}$&$\ang{15}$\\
+	 \bottomrule
+	\end{tabular}
+\end{table}
+
+\section{中間軸回転数$n_2$[rpm],出力軸の回転数$n_3$[rpm]}
+
+中間軸の回転数の$n_2$の算出を行う．単位時間あたりの噛み合う歯の数は等しい．
+
+\begin{equation}
+	n_1z_1=n_2z_2
+\end{equation}
+と表される．そのため$n_2$は
+\begin{equation}
+	n_2=n_1\frac{z_{a1}}{z_{a2}}
+\end{equation}
+となる．
+$z_{a1}$=17,$z_{a2}$=67,$n_1$=1500 \si{rpm}であるから
+\begin{align}
+	n_2&=1500{ \si{rpm}} \times\frac{17}{67}\\
+	   &=380.597\\
+		 &\fallingdotseq381{ \si{rpm}}
+\end{align}
+
+次に出力軸の回転数を求める．$n_2$のときと同様に
+\begin{equation}
+	n_3=n_2\frac{z_{b1}}{z_{b2}}
+\end{equation}
+となり，
+$n_2$=380.6,$z_{b1}$=14,$z_b2$=70より
+\begin{align}
+	n_3&=380.6\times\frac{14}{70}\\
+	   &=76.12 \\
+		 &=76.1{ \si{rpm}}
+\end{align}
+
+\section{1段目減速比$i_1$,2段目減速比$i_2$,全減速比$i$}
+
+\subsection{1段目の減速比}
+まず１段目の減速比を求める．減速比(回転数の比)は
+\begin{equation}
+	i=\frac{n_2}{n_1}=\frac{D_1}{D_2}=\frac{z_1}{z_2}
+\end{equation}
+と表せる．よって，回転数$n_1$,$n_2$を用いて減速比を計算すると
+式(9)より,$n_1$=1500,$n_2$=380.6なため
+\begin{align}
+	i_1&=\frac{380.6}{1500}\\
+	   &=0.25373\\
+		 &\fallingdotseq0.254
+\end{align}
+となる．
+
+\subsection{2段目の減速比}
+同様に$i_2$は$i_2=\frac{n_3}{n_2}$であり，$n_2$は式(5),$n_3$は式(8)より
+\begin{align}
+	i_2&=\frac{76.12}{380.6}\\
+	   &=0.200
+\end{align}
+となる．
+
+\subsection{全減速比}
+全減速比は$i=\frac{n_3}{n_1}$,$n_3$は式(8)より
+\begin{align}
+	i&=\frac{76.12}{1500}\\
+	 &=0.050746\\
+	 &\fallingdotseq0.0507
+\end{align}
+
+\section{入力軸,中間軸,出力軸の動力$N${\si{[W]}}とトルク$T${\si{[Nm]}}}
+
+\subsection{入力軸の動力}
+回転する動力は,
+{動力＝トルク$\times$回転角速度}
+で算出できる．
+\begin{equation}
+\label{}
+N=T_3\times(n_3\frac{2\pi}{60})=\frac{\pi n_3T_3}{30} \si{W}
+\end{equation}
+で全体の動力が求められる.$T_3$=32.0{Nm},$n_3$=76.1よりNを算出すると
+\begin{align}
+\label{a}
+N &=32.0{\si{Nm}}\times (76.1\times \frac{2\pi}{30})\\
+  &=254.6784\\
+	&\fallingdotseq 255{\si{W}}\\
+\end{align}
+
+そこから、各軸の動力Nを求める．
+最初に入力軸動力$N_1$は
+\begin{equation}
+	N_1=\frac{N}{\eta _1}
+\end{equation}
+で表すことができる．(N:全体の動力，$\eta $:伝達効率)式（19）を用いて入力軸の動力を求める．
+\begin{align}
+	N_1&=\frac{255}{0.9}\\
+	&=283.33\\
+	&\fallingdotseq 283 \si{W}
+\end{align}
+
+中間軸動力は
+\begin{align}
+\label{a}
+N_2 &=\frac{N}{\eta _2}\\
+&=\frac{255}{0.95}\\
+&=268.421\\
+&\fallingdotseq 268 {\si{W}}
+\end{align}
+
+次にトルクを求める.
+入力軸トルクは
+\begin{align}
+\label{}
+T_1=\frac{30N_1}{\pi n_1}
+\end{align}
+で求められる．
+よって、入力軸トルクは
+\begin{align}
+\label{}
+T_1&=\frac{30\times 283.33}{\pi \times 1500}\\
+&=1.8035\\
+&\fallingdotseq 1.80{ \si{Nm}}
+\end{align}
+
+次に、中間軸トルクは
+\begin{align}
+\label{}
+T_2=\frac{30N_2}{\pi n_2}
+\end{align}
+で求められ、実際に算出してみると
+
+\begin{align}
+\label{}
+T_2&=\frac{30 \times268.42}{\pi \times 381}\\
+&=6.7276\\
+&\fallingdotseq 6.73{\si{Nm}}
+\end{align}
+
+出力軸トルクは，表２より$T_3=32.0{ \si{Nm}}$
+
+\section{入力軸,中間軸,出力軸の基準ピッチ円直径$d$[mm]}
+基準ピッチ円直径は以下の式で求められる．
+\begin{align}
+\label{}
+d=\frac{zm}{\cos\beta }
+\end{align}
+で表される．
+
+\subsection{入力軸の基準ピッチ円直径}
+式(37)より
+\begin{align}
+	D_1&=\frac{17{ \si{mm}}\times1.25}{\cos\ang{15}}\\
+	   &=21.996 {\si{mm}}\\
+		 &=22.0 {\si{mm}}
+\end{align}
+
+\subsection{中間軸の歯車１基準ピッチ円直径}
+式(37)より
+\begin{align}
+	D_2&=\frac{67 {\si{mm}}\times1.25}{\cos\ang{15}}\\
+	   &=86.7{ \si{mm}}\\
+\end{align}
+
+\subsection{中間軸の歯車２の基準ピッチ円直径}
+式(37)より
+\begin{align}
+\label{}
+D_3&=\frac{14{\si{mm}}\times 1.25}{\cos\ang{15}}\\
+&=18.1173{\si{mm}}\\
+&=18.1{\si{mm}}
+\end{align}
+
+\subsection{出力軸の歯車の基準ピッチ円直径}
+\begin{align}
+\label{}
+D_4&=\frac{70{\si{mm}}\times1.25}{\cos\ang{15}}\\
+   &=90.586{ \si{mm}}\\
+   &\fallingdotseq 90.6 {\si{mm}}
+\end{align}
+
+\section{軸間距離}
+はすば歯車の軸間距離は
+\begin{equation}
+\label{}
+a=\frac{m(z_1+z_2)}{2\cos\beta }
+\end{equation}
+で表される．m：モジュール，$z_1,z_2$:歯数
+式(49)より，入力軸と中間軸の軸間距離は
+\begin{align}
+\label{}
+a&=\frac{1.25 {\si{mm}}\times(17+67)}{2\times \cos\ang{15}}\\
+ &=54.352\\
+ &=54.4 {\si{mm}}
+\end{align}
+
+次に，中間軸と出力軸の軸間距離を算出する．
+\begin{align}
+\label{}
+a&=\frac{1.25{\si{mm}}\times(14+70)}{2\times \cos\ang{15}}\\
+&=54.352\\
+ &=54.4 {\si{mm}}
+\end{align}
+
+以上で軸間距離が求められた．
+
+\section{強度計算}
+\begin{table}[hbtp]
+	\centering
+	\caption{文字の定義}
+	\label{}
+	\begin{tabular}{l|c}
+		\toprule
+		文字&数値\\
+		\hline
+		T[Nm]&6.7368\\
+		D[mm]&90.6\\
+		b[mm]&10\\
+		m[mm]&1.25\\
+		Y[-]&2.2\\
+	 \bottomrule
+	\end{tabular}
+\end{table}
+まず，歯車$b_2$ピッチ円接線方向の力を求める.
+式は以下のように表すことができる．
+\begin{equation}
+\label{}
+F=\frac{T}{\frac{D}{2}}＜{\text　許容される値}
+\end{equation}
+この式を用いて$F$を算出する．
+\begin{align}
+\label{}
+F&=\frac{32.0}{\frac{90.6\times10^{-3}}{2}}\\
+&=706.401\\
+&\fallingdotseq 706\si{N}
+\end{align}
+
+最大曲げ応力$\sigma _{b max}$は以下の式で求められる．
+\begin{align}
+\label{}
+\sigma_{b max}=\frac{FY}{bm}
+\end{align}
+この式を用いると
+\begin{align}
+\label{}
+\sigma_{bmax}&=\frac{706.401\times 2.22}{10 \times 1.25}\\
+&=127.152\\
+&=127{\si{MPa}}
+\end{align}
+
+安全率は,\\
+
+\begin{equation}
+\label{}
+\text{安全率}=\frac{\text 曲げ疲労限度}{\text{最大曲げ応力}}
+\end{equation}
+
+より求められる．P.139の表6.7より曲げ疲労限度は$221 \si{Mpa}$
+よって，
+\begin{align}
+\label{}
+\frac{221}{127}&=1.740\\
+&=1.74\\
+&\fallingdotseq 1.74
+\end{align}
+このような結果から，安全率1.5を満たす．
+
+
+\end{document}
+
